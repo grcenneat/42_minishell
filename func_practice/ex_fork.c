@@ -7,6 +7,7 @@ int main(int argc, char **argv) {
 	int		procNum = 0;
 
 	// 5개의 프로세스 생성
+	// 자식 프로세스 ID를 배열에 저장
 	while (procNum < 5)
 	{
         //fork 생성
