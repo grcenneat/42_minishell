@@ -23,6 +23,7 @@ char	*get_cmd(char *str)
 	{
 		if (str[i] == ' ')
 		    break;
+        i++;
 	}
 	if (i > 0)
 		return (ft_strndup(str, i));
