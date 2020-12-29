@@ -30,22 +30,26 @@ char	*get_cmd(char *str)
 	return (ft_strdup(""));
 }
 
+/*
+** 환경변수와 shell의 실제 path를 초기화하고 prompt 대기
+*/
+
 int main(int argc, char *argv[], char *envp[])
 {
 	(void)argc;
-	(void)argv;
 	(void)envp;
 	char *line;
 	char **lines;
-	char init_str[20] = {"bash-3.2$ "};
+	char init_str[20] = {"minishell$ "};
 	char *cmd;
 	char *path_cmd;
 	int state;
 	pid_t pid;
 //	int fd = open("test", O_RDONLY);
 
-	signal(SIGINT, sig_handle);
-	signal(SIGQUIT, sig_handle); 
+	signal(SIGINT, sigint_handler);
+	signal(SIGQUIT, do_nothing); 
+    g_name = argv[0];
 	while (1)
     {
         while (ft_write(init_str) && (get_next_line(0, &line) > 0))
