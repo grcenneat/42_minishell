@@ -6,13 +6,13 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 00:08:41 by hjung             #+#    #+#             */
-/*   Updated: 2020/12/30 00:37:51 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/02 20:32:36 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	do_nothing(int nb)
+void	sigquit_handler(int nb)
 {
 	(void)nb;
 	ft_putstr_fd("\b\b  \b\b", STDOUT_FILENO);

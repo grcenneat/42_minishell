@@ -45,10 +45,9 @@ int main(int argc, char *argv[], char *envp[])
 	char *path_cmd;
 	int state;
 	pid_t pid;
-//	int fd = open("test", O_RDONLY);
 
 	signal(SIGINT, sigint_handler);
-	signal(SIGQUIT, do_nothing); 
+	signal(SIGQUIT, sigquit_handler); 
     g_name = argv[0];
 	while (1)
     {
