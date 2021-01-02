@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nahkim <nahkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 16:56:21 by nahkim            #+#    #+#             */
-/*   Updated: 2020/06/16 18:03:46 by nahkim           ###   ########.fr       */
+/*   Updated: 2021/01/02 22:32:54 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../includes/minishell.h"
 
 int	to_line(char **line, char *nl, char **buff, char *tmp_buff)
 {

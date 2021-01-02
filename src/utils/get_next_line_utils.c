@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nahkim <nahkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 16:57:58 by nahkim            #+#    #+#             */
-/*   Updated: 2020/06/23 15:34:20 by nahkim           ###   ########.fr       */
+/*   Updated: 2021/01/02 22:32:49 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../includes/minishell.h"
 
 int		ft_strnlen(char *str)
 {

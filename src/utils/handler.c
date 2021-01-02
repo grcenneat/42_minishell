@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   handler.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/30 00:17:46 by hjung             #+#    #+#             */
-/*   Updated: 2020/12/30 00:19:01 by hjung            ###   ########.fr       */
+/*   Created: 2020/12/30 00:08:41 by hjung             #+#    #+#             */
+/*   Updated: 2021/01/02 22:33:28 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "../../includes/minishell.h"
 
-void	do_nothing(int nb);
-void	sigint_handler(int nb);
+void	sigquit_handler(int nb)
+{
+	(void)nb;
+	ft_putstr_fd("\b\b  \b\b", STDOUT_FILENO);
+	return ;
+}
 
-#endif
+void	sigint_handler(int nb)
+{
+	(void)nb;
+	if (write(STDOUT_FILENO, "\b\b  \n", 5) < 0)
+		return ;
+	ft_putstr_fd("minishell$ ", STDOUT_FILENO);
+}

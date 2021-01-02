@@ -6,12 +6,12 @@ CFLAGS	=	-Wall -Wextra -Werror
 
 LIBFT	=	./Libft/libft.a
 
-INC	=	-I./includes
+INC	=	-I./includes/
 
 SRCS	=	main.c	\
-	./get_next_line/get_next_line.c	\
-	./get_next_line/get_next_line_utils.c \
-	./src/handler.c \
+	./src/get_next_line.c	\
+	./src/utils/get_next_line_utils.c \
+	./src/utils/handler.c \
 
 OBJS	=	$(SRCS:.c=.o)
 
@@ -22,10 +22,10 @@ $(NAME): $(OBJS) $(LIBFT)
 
 $(LIBFT)	:
 	$(MAKE)	-s	-C	./Libft
-	$(MAKE)	clean	-C	./Libft
 
 clean:
 	rm	-f	$(OBJS)
+	$(MAKE)	clean	-C	./Libft
 
 fclean:	clean
 	rm	-f	$(NAME)
