@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 18:51:05 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/03 18:51:06 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/03 20:36:33 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,6 @@ int ft_write(char *str)
 	int len = ft_strlen(str);
 	write(1, str, len);
 	return (len);
-}
-
-// signal() 에 의해 SIGINT, SIGQUIT이 들어왔을 때 실행되는 함수
-// 입력된 값이 SIGQUIT일 땐 아무것도 하지 않는다.
-void sig_handle(int signo)
-{
-	if (signo == SIGINT)
-		ft_write("\nbash-3.2$ ");
 }
 
 char	*get_cmd(char *str)
@@ -45,11 +37,11 @@ char	*get_cmd(char *str)
 /*
 ** 환경변수와 shell의 실제 path를 초기화하고 prompt 대기
 */
+#include <stdio.h>
 
 int main(int argc, char *argv[], char *envp[])
 {
 	(void)argc;
-	(void)envp;
 	char *line;
 	char **lines;
 	char init_str[20] = {"minishell$ "};
@@ -57,9 +49,13 @@ int main(int argc, char *argv[], char *envp[])
 	char *path_cmd;
 	int state;
 	pid_t pid;
+    t_minishell minishell;
 
 	signal(SIGINT, sigint_handler);
-	signal(SIGQUIT, sigquit_handler); 
+	signal(SIGQUIT, sigquit_handler);
+    init_env(&minishell, envp);
+
+    printf("key : %s\nvalue : %s\n", minishell.env->key, minishell.env->value);
     g_name = argv[0];
 	while (1)
     {

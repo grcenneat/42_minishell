@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 21:19:42 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/02 22:33:17 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/03 20:16:21 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,17 @@
 
 int     ft_write(char *str);
 char    *get_cmd(char *str);
+
+/*
+** env
+*/
+void		init_env(t_minishell *minishell, char **envp);
+// void		lst_remove_env(char *key);
+// void		lst_check_and_add_env(char *key, char *value);
+t_lstenv	*lst_last_env(t_lstenv *begin);
+t_lstenv	*lst_add_env(t_lstenv *begin, char *key, char *value);
+t_lstenv	*lst_new_env(char *key, char *value);
+
 
 /*
 ** GET_NEXT_LINE
