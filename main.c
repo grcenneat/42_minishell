@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 18:51:05 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/03 20:36:33 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/03 23:07:27 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ int ft_write(char *str)
 	int len = ft_strlen(str);
 	write(1, str, len);
 	return (len);
+}
+
+void	prompt_msg(void)
+{
+	ft_putstr_fd("MINISHELL$ ", 1);
 }
 
 char	*get_cmd(char *str)
@@ -55,10 +60,12 @@ int main(int argc, char *argv[], char *envp[])
 	signal(SIGQUIT, sigquit_handler);
     init_env(&minishell, envp);
 
-    printf("key : %s\nvalue : %s\n", minishell.env->key, minishell.env->value);
     g_name = argv[0];
 	while (1)
     {
+        prompt_msg();
+        if(!read_line(&minishell))
+            continue;
         while (ft_write(init_str) && (get_next_line(0, &line) > 0))
         {
             // | ; > " '

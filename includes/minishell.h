@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 21:19:42 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/03 20:16:21 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/03 23:07:15 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ t_lstenv	*lst_last_env(t_lstenv *begin);
 t_lstenv	*lst_add_env(t_lstenv *begin, char *key, char *value);
 t_lstenv	*lst_new_env(char *key, char *value);
 
-
 /*
 ** GET_NEXT_LINE
 */
@@ -55,10 +54,16 @@ int		to_line(char **line, char *nl, char **fd_set, char *tmp_buff);
 int		get_next_line(int fd, char **line);
 
 /*
-** SIGNAL HANDLER
+** READ_LINE
+*/
+int		read_line(t_minishell *minishell);
+
+/*
+** UTILS
 */
 void	sigquit_handler(int nb);
 void	sigint_handler(int nb);
-
+void	eof_exit(void);
+void	fatal_error_exit(void);
 
 #endif

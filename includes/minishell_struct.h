@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 00:17:46 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/03 20:21:26 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/03 23:07:39 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ typedef	struct		s_lstenv
 typedef struct	s_minishell
 {
 	char			*name;				//에러메시지 출력할 때 필요해서 저장해둠.
-	char			*command_line;		//명령어가 저장되는 변수
+	char			*line;				//명령어가 저장되는 변수
+	char			**tokens;
 	char			*path;
 	char			**bin_paths;
+	int				ret;				//get_next_line() 함수의 리턴값이 저장됨
 	// t_lstcommands	*commands;			//파이프 쓸 때 명령어가 차례로 저장되는 연결리스트 
 	t_lstenv		*env;		//환경변수가 차례로 저장되는 연결리스트
 }				t_minishell;

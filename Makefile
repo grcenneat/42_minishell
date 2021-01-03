@@ -12,8 +12,10 @@ SRCS	=	main.c	\
 			./src/utils/get_next_line.c	\
 			./src/utils/get_next_line_utils.c \
 			./src/utils/handler.c \
+			./src/utils/quit.c \
 			./src/env/init_env.c \
 			./src/env/lstenv.c \
+			./src/parse/read_line.c \
 
 OBJS	=	$(SRCS:.c=.o)
 
