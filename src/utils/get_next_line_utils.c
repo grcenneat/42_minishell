@@ -6,11 +6,11 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 16:57:58 by nahkim            #+#    #+#             */
-/*   Updated: 2021/01/02 22:32:49 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/03 18:51:17 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 int		ft_strnlen(char *str)
 {

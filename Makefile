@@ -1,26 +1,29 @@
 NAME	=	minishell
 
-CC	=	gcc
+CC		=	gcc
 
 CFLAGS	=	-Wall -Wextra -Werror
 
 LIBFT	=	./Libft/libft.a
 
-INC	=	-I./includes/
+INC		= -I ./includes
 
 SRCS	=	main.c	\
-	./src/get_next_line.c	\
-	./src/utils/get_next_line_utils.c \
-	./src/utils/handler.c \
+			./src/utils/get_next_line.c	\
+			./src/utils/get_next_line_utils.c \
+			./src/utils/handler.c \
 
 OBJS	=	$(SRCS:.c=.o)
 
 all:	$(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC)	-o	$(NAME)	$(SRCS)	$(LIBFT)	$(INC)	$(CFLAGS)
+%.o: %.c
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
-$(LIBFT)	:
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(INC) $(SRCS) $(LIBFT) -o $(NAME)
+
+$(LIBFT):
 	$(MAKE)	-s	-C	./Libft
 
 clean:

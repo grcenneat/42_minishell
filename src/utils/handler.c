@@ -6,11 +6,11 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 00:08:41 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/02 22:33:28 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/03 18:50:56 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 void	sigquit_handler(int nb)
 {

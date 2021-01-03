@@ -6,11 +6,11 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 16:56:21 by nahkim            #+#    #+#             */
-/*   Updated: 2021/01/02 22:32:54 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/03 18:51:14 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 int	to_line(char **line, char *nl, char **buff, char *tmp_buff)
 {

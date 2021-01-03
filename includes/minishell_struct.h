@@ -6,12 +6,19 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 00:17:46 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/02 20:19:12 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/02 22:31:30 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_STRUCT_H
 # define MINISHELL_STRUCT_H
+
+typedef	struct		s_lstenv
+{
+	char			*key;
+	char			*value;
+	void			*next;
+}					t_lstenv;
 
 typedef struct	s_minishell
 {
@@ -20,7 +27,7 @@ typedef struct	s_minishell
 	char			*path;
 	char			**bin_paths;
 	// t_lstcommands	*commands;			//파이프 쓸 때 명령어가 차례로 저장되는 연결리스트 
-	// t_lstenv_v		*env_variables;		//환경변수가 차례로 저장되는 연결리스트
+	t_lstenv		*env_variables;		//환경변수가 차례로 저장되는 연결리스트
 }				t_minishell;
 
 char		*g_name;					//에러메세지 출력에 필요. ./minishell을 저장함
