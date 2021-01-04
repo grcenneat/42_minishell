@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 18:51:05 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/04 20:10:16 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/04 21:59:11 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int main(int argc, char *argv[], char *envp[])
         prompt_msg();
         if(!read_line(&minishell))
             continue;
-        if (!init_cmd_list(minishell.tokens))
+        if (!init_cmd_list(&minishell, minishell.tokens))
         {
-			free_cmd();
+			free_cmd(&minishell);
 			continue ;
 		}
         while (ft_write(init_str) && (get_next_line(0, &line) > 0))
