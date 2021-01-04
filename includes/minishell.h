@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 21:19:42 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 02:41:09 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 02:56:54 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ char    *get_cmd(char *str);
 ** lst_env
 */
 void		init_env(t_minishell *minishell, char **envp);
-// void		lst_remove_env(char *key);
-// void		lst_check_and_add_env(char *key, char *value);
+void		lst_remove_env(t_minishell *minishell, char *key);
+void		lst_chk_and_add_env(t_minishell *minishell, char *key, char *value);
 t_lstenv	*lst_last_env(t_lstenv *begin);
 t_lstenv	*lst_add_env(t_lstenv *begin, char *key, char *value);
 t_lstenv	*lst_new_env(char *key, char *value);
@@ -109,6 +109,9 @@ int			exec_echo(t_lstcmd *cmd);
 int			exec_cd(t_minishell *minishell, t_lstcmd *cmd);
 int			count_arg(char **argv);
 char		*lst_find_env(t_minishell *minishell, char *key);
+int			exec_pwd(t_lstcmd *cmd);
+int			exec_export(t_minishell *minishell, t_lstcmd *cmd);
+int			exec_unset(t_minishell *minishell, t_lstcmd *cmd);
 
 /*
 ** PIPE

@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 20:05:14 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/03 20:11:24 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 02:56:23 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,16 @@ t_lstenv
 	last->next = lst_new_env(key, value);
 	return (begin);
 }
-/*
+
 void
-	lst_remove_env(char *key)
+	lst_remove_env(t_minishell *minishell, char *key)
 {
 	t_lstenv *bef;
 	t_lstenv *now;
 	t_lstenv *nxt;
 
 	bef = 0;
-	now = get_minish()->env;
+	now = minishell->env;
 	while (now)
 	{
 		nxt = now->next;
@@ -59,7 +59,7 @@ void
 			if (bef)
 				bef->next = nxt;
 			else
-				get_minish()->env = nxt;
+				minishell->env = nxt;
 			free(now->key);
 			if (now->value)
 				free(now->value);
@@ -72,15 +72,15 @@ void
 }
 
 void
-	lst_check_and_add_env(char *key, char *value)
+	lst_chk_and_add_env(t_minishell *minishell, char *key, char *value)
 {
 	t_lstenv	*env;
 	t_lstenv	*last;
 
-	env = get_minish()->env;
+	env = minishell->env;
 	while (env)
 	{
-		if (ft_strequ(env->key, key))
+		if (!ft_strcmp(env->key, key))
 		{
 			if (env->value && value)
 				free(env->value);
@@ -93,4 +93,3 @@ void
 	}
 	last->next = lst_new_env(key, value);
 }
-*/

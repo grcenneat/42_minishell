@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 00:13:56 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 02:40:59 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 02:54:24 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ int
 	else if (btin_nb == 2)
 		ret = exec_pwd(cmd);
 	else if (btin_nb == 3)
-		ret = exec_export(cmd);
+		ret = exec_export(minishell, cmd);
 	else if (btin_nb == 4)
-		ret = exec_unset(cmd);
+		ret = exec_unset(minishell, cmd);
 	else if (btin_nb == 5)
 		ret = exec_env(cmd);
 	else if (btin_nb == 6)
