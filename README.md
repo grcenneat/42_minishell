@@ -1,1 +1,2 @@
-# minishell-with-hjung
+# 42_minishell
+Let's reinvent the wheel :(
