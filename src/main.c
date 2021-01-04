@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 18:51:05 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 00:12:24 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 03:15:12 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,13 @@ char	*get_cmd(char *str)
 int main(int argc, char *argv[], char *envp[])
 {
 	(void)argc;
-	char *line;
-	char **lines;
-	char init_str[20] = {"minishell$ "};
-	char *cmd;
-	char *path_cmd;
-	int state;
-	pid_t pid;
+    (void)argv;
     t_minishell minishell;
 
 	signal(SIGINT, sigint_handler);
 	signal(SIGQUIT, sigquit_handler);
     init_env(&minishell, envp);
 
-    g_name = argv[0];
 	while (1)
     {
         prompt_msg();
@@ -73,44 +66,6 @@ int main(int argc, char *argv[], char *envp[])
 		}
         exec_command(&minishell);
         free_cmd(&minishell);
-        while (ft_write(init_str) && (get_next_line(0, &line) > 0))
-        {
-            // | ; > " '
-            // remove ' ' before string to parse command without option
-            cmd = get_cmd(line);
-            if (!strcmp(cmd, "exit"))
-                exit(0);
-            pid = fork();
-            if (pid == 0)
-            {
-                path_cmd = ft_strjoin("/bin/", cmd);
-                lines = ft_split(line, ' ');
-                if (execve(path_cmd, lines, envp) == -1)
-                {
-                    ft_write("bash: command not found: ");
-                    ft_write(cmd);
-                    ft_write("\n");
-                }
-                free(cmd);
-                free(path_cmd);
-                free(lines);
-                free(line);
-                exit(0);
-            }
-            else if (pid > 0)
-            {
-                waitpid(pid, &state, 0);
-                free(cmd);
-                free(line);
-            }
-            else if (pid == -1)
-            {
-                //printf("%s\n", strerror(errno));
-                ft_write(strerror(errno));
-                ft_write("\n");
-                exit(1);
-            }
-        }
     }
 	return (0);
 }

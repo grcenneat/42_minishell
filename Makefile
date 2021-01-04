@@ -26,7 +26,7 @@ SRCS	=	./src/main.c \
 			./src/run/pipe_1.c \
 			./src/run/pipe_2.c \
 			./src/run/dollar_quotes.c \
-			./src/run/check_rdir_dollars.c \
+			./src/run/check_rdir_dollar.c \
 			./src/run/redirection.c \
 			./src/run/exec_echo.c \
 			./src/run/exec_cd.c \
@@ -35,9 +35,12 @@ SRCS	=	./src/main.c \
 			./src/run/exec_unset.c \
 			./src/run/exec_env.c \
 			./src/run/exec_exit.c \
+			./src/run/exec_non_btin.c \
 			./src/utils/quit.c \
-			./src/utils/free.c \
+			./src/utils/free_1.c \
+			./src/utils/free_2.c \
 			./src/utils/error_1.c \
+			./src/utils/error_2.c \
 
 OBJS	=	$(SRCS:.c=.o)
 

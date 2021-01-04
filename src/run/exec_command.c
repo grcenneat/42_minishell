@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 00:13:56 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 02:54:24 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 03:19:42 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int
 	else if (btin_nb == 4)
 		ret = exec_unset(minishell, cmd);
 	else if (btin_nb == 5)
-		ret = exec_env(cmd);
+		ret = exec_env(minishell, cmd);
 	else if (btin_nb == 6)
-		ret = exec_exit(cmd);
+		ret = exec_exit(minishell, cmd);
 	close_redirection(cmd);
 	return (ret);
 }
@@ -85,7 +85,7 @@ static void
 	{
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
-		exec_non_built_in(cmd);
+		exec_non_built_in(minishell, cmd);
 	}
 	else if (child_pid > 0)
 	{

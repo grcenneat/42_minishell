@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 20:05:14 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 02:56:23 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 03:15:28 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void
 	while (now)
 	{
 		nxt = now->next;
-		if (ft_strequ(now->key, key))
+		if (!ft_strcmp(now->key, key))
 		{
 			if (bef)
 				bef->next = nxt;

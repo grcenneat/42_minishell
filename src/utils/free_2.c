@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_echo.c                                        :+:      :+:    :+:   */
+/*   free_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/05 02:33:22 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 03:30:16 by hjung            ###   ########.fr       */
+/*   Created: 2021/01/05 03:09:32 by hjung             #+#    #+#             */
+/*   Updated: 2021/01/05 03:10:30 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void
-	print_arg(char **argv, int i, int cnt)
+void
+	free_env(t_minishell *minishell)
 {
-	while (argv[i])
+	t_lstenv *env;
+	t_lstenv *tmp;
+
+	env = minishell->env;
+	while (env)
 	{
-		ft_putstr_fd(argv[i], 1);
-		if (i < cnt - 1)
-			ft_putstr_fd(" ", 1);
-		i++;
+		tmp = env->next;
+		free(env->key);
+		free(env->value);
+		free(env);
+		env = tmp;
 	}
 }
 
-int
-	exec_echo(t_lstcmd *cmd)
+void
+	free_all(t_minishell *minishell)
 {
-	int cnt;
-
-	cnt = count_arg(cmd->argv);
-	if (cnt > 2 && !ft_strcmp(cmd->argv[1], "-n"))
-		print_arg(cmd->argv, 2, cnt);
-	else
-	{
-		print_arg(cmd->argv, 1, cnt);
-		ft_putstr_fd("\n", 1);
-	}
-	return (EXIT_SUCCESS);
+	free_cmd(minishell);
+	free_env(minishell);
 }

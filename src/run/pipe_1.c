@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 00:18:20 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 02:25:54 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 03:23:15 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_lstcmd
 			dup2_and_close_pipe(pipes, i, nb);
 			if ((btin_nb = is_built_in(cmd->argv[0])) != -1)
 				exit(exec_built_in(minishell, btin_nb, cmd));
-			exec_non_built_in(cmd);
+			exec_non_built_in(minishell, cmd);
 		}
 		else if (cpid[i] == -1)
 			fatal_error_exit();

@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_echo.c                                        :+:      :+:    :+:   */
+/*   exec_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/05 02:33:22 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 03:30:16 by hjung            ###   ########.fr       */
+/*   Created: 2020/01/05 16:15:01 by hjung             #+#    #+#             */
+/*   Updated: 2021/01/05 03:04:29 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 static void
-	print_arg(char **argv, int i, int cnt)
+	print_env(t_lstenv *env)
 {
-	while (argv[i])
+	while (env)
 	{
-		ft_putstr_fd(argv[i], 1);
-		if (i < cnt - 1)
-			ft_putstr_fd(" ", 1);
-		i++;
+		if (env->value != NULL)
+		{
+			ft_putstr_fd(env->key, 1);
+			ft_putstr_fd("=", 1);
+			ft_putstr_fd(env->value, 1);
+			ft_putstr_fd("\n", 1);
+		}
+		env = env->next;
 	}
 }
 
 int
-	exec_echo(t_lstcmd *cmd)
+	exec_env(t_minishell *minishell, t_lstcmd *cmd)
 {
-	int cnt;
-
-	cnt = count_arg(cmd->argv);
-	if (cnt > 2 && !ft_strcmp(cmd->argv[1], "-n"))
-		print_arg(cmd->argv, 2, cnt);
-	else
-	{
-		print_arg(cmd->argv, 1, cnt);
-		ft_putstr_fd("\n", 1);
-	}
+	(void)cmd;
+	print_env(minishell->env);
 	return (EXIT_SUCCESS);
 }
