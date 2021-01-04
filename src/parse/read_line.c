@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 20:49:05 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/03 23:08:39 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/04 20:09:17 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	read_line(t_minishell *minishell)
 {
 	if (!current_line_handle(minishell))
 		return (0);
-	// minishell->tokens = lexing(minishell->line);
-	// if (!minishell->tokens)
-	// 	fatal_error_exit();
+	minishell->tokens = lexing(minishell->line);
+	if (!minishell->tokens)
+		fatal_error_exit();
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 21:19:42 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/03 23:07:15 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/04 17:38:56 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define MINISHELL_H
 
 # define BUFFSIZE 128
+# define SEP_SPACE " \t<>|;"
+# define SEP "<>|;"
+# define SPACE " \t"
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -57,6 +60,10 @@ int		get_next_line(int fd, char **line);
 ** READ_LINE
 */
 int		read_line(t_minishell *minishell);
+char	**lexing(char *line);
+int		jmp_quotes(char *line, int i);
+int		check_sep(char *line, int i, int use);
+int		jump_space(char *line, int i, int jmp);
 
 /*
 ** UTILS
@@ -65,5 +72,6 @@ void	sigquit_handler(int nb);
 void	sigint_handler(int nb);
 void	eof_exit(void);
 void	fatal_error_exit(void);
+int		ft_haschr(const char *s, char c);
 
 #endif
