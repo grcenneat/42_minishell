@@ -8,7 +8,7 @@ LIBFT	=	./Libft/libft.a
 
 INC		= -I ./includes
 
-SRCS	=	main.c	\
+SRCS	=	./src/main.c \
 			./src/utils/get_next_line.c	\
 			./src/utils/get_next_line_utils.c \
 			./src/utils/handler.c \
@@ -17,11 +17,24 @@ SRCS	=	main.c	\
 			./src/env/lstenv.c \
 			./src/parse/read_line.c \
 			./src/parse/lexer.c \
-			./src/parse/lexer2.c \
+			./src/parse/lexer_2.c \
 			./src/parse/init_cmd.c \
 			./src/parse/lstcmd.c \
 			./src/parse/parser.c \
 			./src/parse/lst_rdir.c \
+			./src/run/exec_command.c \
+			./src/run/pipe_1.c \
+			./src/run/pipe_2.c \
+			./src/run/dollar_quotes.c \
+			./src/run/check_rdir_dollars.c \
+			./src/run/redirection.c \
+			./src/run/exec_echo.c \
+			./src/run/exec_cd.c \
+			./src/run/exec_pwd.c \
+			./src/run/exec_export.c \
+			./src/run/exec_unset.c \
+			./src/run/exec_env.c \
+			./src/run/exec_exit.c \
 			./src/utils/quit.c \
 			./src/utils/free.c \
 			./src/utils/error_1.c \

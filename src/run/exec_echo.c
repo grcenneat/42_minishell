@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   exec_echo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/04 16:46:56 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 01:59:31 by hjung            ###   ########.fr       */
+/*   Created: 2021/01/05 02:33:22 by hjung             #+#    #+#             */
+/*   Updated: 2021/01/05 02:34:52 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_haschr(const char *s, char c)
+static void
+	print_arg(char **argv, int i, int cnt)
 {
-	int i;
-
-	i = 0;
-	while (s[i])
+	while (argv[i])
 	{
-		if (s[i] == c)
-			return (1);
+		ft_putstr(argv[i]);
+		if (i < cnt - 1)
+			ft_putstr(" ");
 		i++;
 	}
-	return (0);
 }
 
-int	ft_strcmp(const char *s1, const char *s2)
+int
+	exec_echo(t_lstcmd *cmd)
 {
-	int	i;
+	int cnt;
 
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	cnt = count_arg(cmd->argv);
+	if (cnt > 2 && !ft_strcmp(cmd->argv[1], "-n"))
+		print_arg(cmd->argv, 2, cnt);
+	else
+	{
+		print_arg(cmd->argv, 1, cnt);
+		ft_putstr_fd("\n", 1);
+	}
+	return (EXIT_SUCCESS);
 }

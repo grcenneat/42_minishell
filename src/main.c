@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 18:51:05 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/04 21:59:11 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 00:12:24 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int main(int argc, char *argv[], char *envp[])
 			free_cmd(&minishell);
 			continue ;
 		}
+        exec_command(&minishell);
+        free_cmd(&minishell);
         while (ft_write(init_str) && (get_next_line(0, &line) > 0))
         {
             // | ; > " '

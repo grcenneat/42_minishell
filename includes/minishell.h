@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 21:19:42 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/04 23:29:21 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 02:41:09 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 # define MINISHELL_H
 
 # define BUFFSIZE 128
+# define WHITE_SPACE " tnvfr"
 # define SEP_SPACE " \t<>|;"
 # define SEP "<>|;"
 # define SPACE " \t"
+# define PATH_MAX 1024
+# define LINE_MAX 100024
+# define NO_EXCODE -1
+# define NO_STATUS -1
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -82,6 +87,40 @@ void		lst_add_redir_cmd(t_lstcmd *cmd, char *redir, char *file);
 t_rdir		*lst_last_rdir(t_rdir *begin);
 
 /*
+** RUN
+*/
+void		exec_command(t_minishell *minishell);
+int			is_built_in(char *arg);
+int			exec_built_in(t_minishell *minishell, int btin_nb, t_lstcmd *cmd);
+void		open_redirection(t_lstcmd *cmd);
+void		close_redirection(t_lstcmd *cmd);
+
+
+/*
+**	dollar_quotes.c
+*/
+int			check_dollar(t_minishell *minishell, t_lstcmd *cmd);
+char		*check_quote(t_minishell *minishell, char *tk, int i);
+
+/*
+** BUILT_IN
+*/
+int			exec_echo(t_lstcmd *cmd);
+int			exec_cd(t_minishell *minishell, t_lstcmd *cmd);
+int			count_arg(char **argv);
+char		*lst_find_env(t_minishell *minishell, char *key);
+
+/*
+** PIPE
+*/
+t_lstcmd	*piping(t_minishell *minishell, t_lstcmd *cmd);
+int			count_pipes(t_lstcmd *begin);
+void		create_pipes(int pipes[], int nb);
+void		close_all(int pipes[], int nb);
+void		close_pipe_and_wait(t_minishell *minishell, int pipes[], int nb, int cpid[]);
+void		dup2_and_close_pipe(int pipes[], int i, int nb);
+
+/*
 ** UTILS
 */
 void		sigquit_handler(int nb);
@@ -89,6 +128,7 @@ void		sigint_handler(int nb);
 void		eof_exit(void);
 void		fatal_error_exit(void);
 int			ft_haschr(const char *s, char c);
+int			ft_strcmp(const char *s1, const char *s2);
 
 /*
 ** ERROR
