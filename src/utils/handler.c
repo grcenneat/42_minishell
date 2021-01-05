@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 00:08:41 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/03 18:50:56 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 23:21:05 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,16 @@ void	sigquit_handler(int nb)
 void	sigint_handler(int nb)
 {
 	(void)nb;
-	if (write(STDOUT_FILENO, "\b\b  \n", 5) < 0)
-		return ;
-	ft_putstr_fd("minishell$ ", STDOUT_FILENO);
+	if (g_minish->executed == 1)
+	{
+		ft_putstr_fd("\n", 1);
+		g_minish->executed = 0;
+	}
+	else
+	{
+		write(STDOUT_FILENO, "\b\b  \n", 5);
+		g_minish->eof = 0;
+		prompt_msg();
+		g_minish->excode = 1;
+	}
 }

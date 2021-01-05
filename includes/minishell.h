@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 21:19:42 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 20:47:12 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/06 00:39:14 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <dirent.h>
 # include <fcntl.h>
 # include <sys/wait.h>
+# include <sys/types.h>
 # include <signal.h>
 # include <sys/stat.h>
 # include <string.h>
@@ -77,7 +78,7 @@ t_lstcmd	*lst_last_cmd(t_lstcmd *cmd);
 
 /*
 ** PARSE
-**/
+*/
 int			ck_tokens(char **tokens);
 int			is_redir(char *s);
 void		lst_add_redir_cmd(t_lstcmd *cmd, char *redir, char *file);
@@ -121,7 +122,8 @@ t_lstcmd	*piping(t_minishell *minishell, t_lstcmd *cmd);
 int			count_pipes(t_lstcmd *begin);
 void		create_pipes(int pipes[], int nb);
 void		close_all(int pipes[], int nb);
-void		close_pipe_and_wait(t_minishell *minishell, int pipes[], int nb, int cpid[]);
+void		close_pipe_and_wait(t_minishell *minishell,
+							int pipes[], int nb, int cpid[]);
 void		dup2_and_close_pipe(int pipes[], int i, int nb);
 
 /*
@@ -135,6 +137,7 @@ void		get_exit_code(t_minishell *minishell, int status, int excode);
 int			ft_haschr(const char *s, char c);
 int			ft_strcmp(const char *s1, const char *s2);
 char		**lst_env_to_char(t_lstenv *env);
+void		prompt_msg(void);
 
 /*
 ** ERROR
@@ -143,7 +146,7 @@ int			syntax_error(char *token, int ret);
 int			no_command_error(char *cmd, int ret);
 int			too_many_arg_error(char *cmd, int ret);
 int			no_file_error(char *cmd, char *file, int ret);
-int			numeric_arg_error(t_minishell *minishell, 
+int			numeric_arg_error(t_minishell *minishell,
 						char *cmd, char *file, int ret);
 int			file_too_long(char *cmd, char *file, int ret);
 

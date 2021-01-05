@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 00:17:46 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 12:49:58 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 23:19:19 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ typedef struct		s_minishell
 	t_lstenv		*env;				//환경변수가 차례로 저장되는 연결리스트
 	t_lstcmd		*cmd;				//파이프 쓸 때 명령어가 차례로 저장되는 연결리스트 
 }					t_minishell;
+
+t_minishell			*g_minish;
 
 #endif
