@@ -6,14 +6,14 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 20:49:05 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 12:54:42 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 20:52:04 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 static int
-	previous_is_eof(t_minishell	*minishell)
+	previous_is_eof(t_minishell *minishell)
 {
 	char		*bef_line;
 	char		*new_line;
@@ -37,7 +37,8 @@ static int
 	return (1);
 }
 
-static int	current_line_handle(t_minishell *minishell)
+static int
+	current_line_handle(t_minishell *minishell)
 {
 	minishell->ret = get_next_line(0, &(minishell->line));
 	if (minishell->ret == -1)
@@ -55,7 +56,8 @@ static int	current_line_handle(t_minishell *minishell)
 	return (1);
 }
 
-int	read_line(t_minishell *minishell)
+int
+	read_line(t_minishell *minishell)
 {
 	if (minishell->eof)
 	{

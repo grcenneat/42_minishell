@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 23:02:46 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 02:26:59 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 20:53:23 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ void	fatal_error_exit(void)
 	exit(EXIT_FAILURE);
 }
 
-void
-	get_exit_code(t_minishell *minishell, int status, int excode)
+void	get_exit_code(t_minishell *minishell, int status, int excode)
 {
 	if (excode == -1)
 	{

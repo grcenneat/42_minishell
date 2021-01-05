@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 03:18:26 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 03:21:47 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 20:46:04 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static char
 	**create_path_arr(t_minishell *minishell)
 {
 	t_lstenv	*env;
-	char	*path_env;
-	char	**path_arr;
+	char		*path_env;
+	char		**path_arr;
 
 	env = minishell->env;
 	path_env = 0;

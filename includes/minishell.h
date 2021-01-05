@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 21:19:42 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 03:35:15 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 20:47:12 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@
 
 # include "../Libft/libft.h"
 # include "minishell_struct.h"
-
-int     ft_write(char *str);
-char    *get_cmd(char *str);
 
 /*
 ** lst_env

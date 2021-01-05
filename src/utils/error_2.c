@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 03:28:01 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 03:28:24 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 20:52:59 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int
 }
 
 int
-	numeric_arg_error(t_minishell *minishell, 
+	numeric_arg_error(t_minishell *minishell,
 						char *cmd, char *file, int ret)
 {
 	ft_putstr_fd("minishell: ", 2);

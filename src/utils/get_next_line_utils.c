@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 16:57:58 by nahkim            #+#    #+#             */
-/*   Updated: 2021/01/03 18:51:17 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/05 20:57:29 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int		ft_strnlen(char *str)
 	}
 	return (count);
 }
-
 
 char	*ft_strnjoin(char *s1, char *s2)
 {
