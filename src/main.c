@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 18:51:05 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 23:21:47 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/06 01:09:25 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		main(int argc, char *argv[], char *envp[])
 	signal(SIGINT, sigint_handler);
 	signal(SIGQUIT, sigquit_handler);
 	init_env(&minishell, envp);
+	minishell.line = ft_strdup("");
 	while (1)
 	{
 		prompt_msg();

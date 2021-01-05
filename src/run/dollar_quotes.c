@@ -6,7 +6,7 @@
 /*   By: hjung <hjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 02:04:14 by hjung             #+#    #+#             */
-/*   Updated: 2021/01/05 03:25:20 by hjung            ###   ########.fr       */
+/*   Updated: 2021/01/06 01:43:56 by hjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ static int
 	{
 		ret = get_key(key, ++arg);
 		value = lst_find_env(minishell, key);
-		*j = ft_strlcat(buff, value, LINE_MAX) - 1;
+		if (!value)
+			*j = ft_strlcat(buff, key, LINE_MAX) - 1;
+		else
+			*j = ft_strlcat(buff, value, LINE_MAX) - 1;
 	}
 	return (ret);
 }

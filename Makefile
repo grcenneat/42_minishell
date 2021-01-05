@@ -1,12 +1,12 @@
 NAME	=	minishell
 
-CC		=	gcc -g
+CC		=	gcc
 
 CFLAGS	=	-Wall -Wextra -Werror
 
 LIBFT	=	./Libft/libft.a
 
-INC		= -I ./includes
+INC		= 	-I ./includes
 
 SRCS	=	./src/main.c \
 			./src/utils/get_next_line.c	\
